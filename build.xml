@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project name="HelloWorld" default="jar">
+
+	<path id="app.classpath">
+		<pathelement location="bin" />
+		<pathelement location="${user.home}/.kindle/Kindlet-1.2.jar" />
+	</path>
+	<property name="target" value="1.4" />
+	<property name="source" value="1.4" />
+	<property name="ant.build.javac.source" value="1.4"/>
+	<property name="ant.build.javac.target" value="1.4"/>
+	<target name="compile">
+		<mkdir dir="bin" />
+		<javac srcdir="src" destdir="bin" classpathref="app.classpath" />
+	</target>
+	<target name="jar" depends="compile">
+		<mkdir dir="dist" />
+		<jar destfile="HelloWorld.jar" basedir="bin">
+			<manifest>
+				<attribute name="Manifest-Version" value="1.0" />
+				<attribute name="Main-Class" value="test.main" />
+				<attribute name="Implementation-Title" value="Hello World" />
+				<attribute name="Implementation-Version" value="0.0.1" />
+				<attribute name="Implementation-Vendor" value="@kindlet github" />
+				<attribute name="Extension-List" value="SDK" />
+				<attribute name="SDK-Extension-Name" value="com.amazon.kindle.kindlet" />
+				<attribute name="SDK-Specification-Version" value="1.2" />
+				<attribute name="Toolbar-Mode" value="persistent" />
+				<attribute name="Font-Size-Mode" value="point" />
+			</manifest>
+
+		</jar>
+	</target>
+
+</project>
